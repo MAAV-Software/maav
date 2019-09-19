@@ -1,20 +1,20 @@
 build:
-	mkdir -p /software/build && cd /software/build && cmake .. && make -j
+	mkdir -p /software/build && cd /software/build && cmake .. && make -j7
 
-ls: 
-	apt search ffmpeg
 bash:
 	/bin/bash
 
 run-all:
 	./maav-software/bin/maav-exec
 
-apt:
-	apt-get search rapidjson
-
 clean:
-	rm -r maav-software/bin; rm -r maav-software/lib; cd maav-software/build && make clean
+	rm -r /software/bin; rm -r /software/lib; cd /software/build && make clean
+
+nuke:
+	cd; rm -r /software/bin; rm -r /software/lib; rm -r /software/build
 
 .PHONY: build
-.PHONY: run
+.PHONY: bash
+.PHONY: run-all
 .PHONY: clean
+.PHONY: nuke
