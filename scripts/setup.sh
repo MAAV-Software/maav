@@ -30,6 +30,7 @@ DEBIAN_FRONTEND=noninteractive apt-get install \
                 python3-pip \
                 libvtk6-dev \
                 libopenni2-dev \
+                cmake-curses-gui \
                 sl -y # system libraries
 
 # Install custom deps
@@ -44,7 +45,7 @@ DEBIAN_FRONTEND=noninteractive apt-get install \
 /scripts/install/install-librealsense.sh
 /scripts/install/install-pcl.sh
 /scripts/install/install-opencv3.sh
-/scripts/install/install-apriltag.sh
+/scripts/install/install-apriltags.sh
 /scripts/install/install-octomap.sh
 /scripts/install/install-qt5.sh
 /scripts/setup_sim.sh
