@@ -6,11 +6,11 @@ This repo will set up a software environment for MAAV using docker.
 
 Simply run
 
-````
+```
 ./maav-init.sh
 ```
 
-to install docker, pull the software repo, and build the docker image.
+To install docker, pull the software repo, and build the docker image.
 
 Once the MAAV Software repo is pulled you may want to add your fork as
 a remote. This can be done using
