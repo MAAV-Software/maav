@@ -2,7 +2,9 @@ build:
 	mkdir -p /software/build && cd /software/build && cmake .. && make -j
 
 ls: 
-	ls /usr/local/lib
+	apt search ffmpeg
+bash:
+	/bin/bash
 
 run-all:
 	./maav-software/bin/maav-exec

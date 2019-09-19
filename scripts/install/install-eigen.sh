@@ -3,6 +3,7 @@
 # Install Eigen header library
 
 apt-get install wget unzip libblas-dev
+apt-get remove libeigen*
 
 # Download Eigen release 3.3.7
 wget https://github.com/eigenteam/eigen-git-mirror/archive/3.3.7.zip -O eigen.zip

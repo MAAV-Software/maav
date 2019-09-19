@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt-get update -y
-#apt-get dist-upgrade
+apt-get dist-upgrade
 DEBIAN_FRONTEND=noninteractive apt-get install \
                 git \
                 cmake \
@@ -29,6 +29,7 @@ DEBIAN_FRONTEND=noninteractive apt-get install \
                 python3 \
                 python3-pip \
                 libvtk6-dev \
+                libopenni2-dev \
                 sl -y # system libraries
 
 # Install custom deps
