@@ -1,35 +1,38 @@
 #!/bin/bash
 
-CMD=$1
+# Set command requested; "help" by default
+CMD=${1:-help}
+
+# Set argument for command; for now, "build" and "run" use an argument
 ARG=$2
 
 # TODO: read this from ~/.maavrc
-MAAV_DIR=/home/rpash/maav
+# Set the directory of the MAAV repository on this machine
+# Note: this will be the highest directory that is still in the repo
+# Note: this is also the current directory TODO
+MAAV_DIR=$PWD
 
+# Run the built MAAV code
+# TODO
 function run() {
     cd $MAAV_DIR
     ACTION=$1 docker-compose run --rm maav-run
 }
 
-function print_where() {
-    echo $MAAV_DIR
-}
-
+# Delete the following folders:
+# * software/bin   - Contains executable files built from source
+# * software/lib   - Contains MAAV libraries, not third party libraries
+# * software/build - Contains build data
 function nuke() {
-    if [ -d "$MAAV_DIR/software/bin" ]; then
-        echo "Removing $MAAV_DIR/software/bin"
-        rm -r $MAAV_DIR/software/bin
-    fi
-    if [ -d "$MAAV_DIR/software/lib" ]; then
-        echo "Removing $MAAV_DIR/software/lib"
-        rm -r $MAAV_DIR/software/lib
-    fi
-    if [ -d "$MAAV_DIR/software/build" ]; then
-        echo "Removing $MAAV_DIR/software/build"
-        rm -r $MAAV_DIR/software/build
-    fi
+    echo "Removing $MAAV_DIR/software/bin"
+    rm -rf $MAAV_DIR/software/bin
+    echo "Removing $MAAV_DIR/software/lib"
+    rm -rf $MAAV_DIR/software/lib
+    echo "Removing $MAAV_DIR/software/build"
+    rm -rf $MAAV_DIR/software/build
 }
 
+# Print script usage
 function print_help() {
     echo "Usage: maav [command]"
     echo -e "Commands:"
@@ -41,9 +44,13 @@ function print_help() {
     echo -e "\trun [exe]\tRun a compiled executable"
 }
 
-if [ $CMD == "help" ]; then
-    print_help
-elif [ $CMD == "where" ]; then
+# Print the location of the MAAV directory
+function print_where() {
+    echo $MAAV_DIR
+}
+
+# Read command, and call appropriate function
+if [ $CMD == "where" ]; then
     print_where
 elif [ $CMD == "build" ]; then
     run build $ARG
@@ -53,4 +60,6 @@ elif [ $CMD == "nuke" ]; then
     nuke
 elif [ $CMD == "run" ]; then
     run $ARG
+else
+    print_help
 fi
