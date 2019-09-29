@@ -8,15 +8,18 @@ ARG=$2
 
 # TODO: read this from ~/.maavrc
 # Set the directory of the MAAV repository on this machine
-# Note: this will be the highest directory that is still in the repo
-# Note: this is also the current directory TODO
-MAAV_DIR=$PWD
+# Note: this will be the directory of this script
+MAAV_DIR=$(dirname "$0")
 
 # Run the built MAAV code
-# TODO
 function run() {
+    # Change to the MAAV directory
     cd $MAAV_DIR
-    ACTION=$1 docker-compose run --rm maav-run
+
+    # Get the action we are running; docker-compose by default
+    ACTION=${1:-docker-compose run --rm maav-run}
+
+    # TODO Run action
 }
 
 # Delete the following folders:
