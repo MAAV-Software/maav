@@ -8,3 +8,14 @@ services:
       - ${PWD}/Makefile:/Makefile
     container_name: maav-run
     command: "make ${ACTION}"
+  gazebo:
+    image: maav-software
+    volumes:
+      - ./software:/software
+      - ${PWD}/Makefile:/Makefile
+      - $HOME/.Xauthority:/root/.Xauthority:rw
+    environment:
+      - DISPLAY
+    network_mode: "host"
+    container_name: gazebo-run
+    command: "gazebo"
