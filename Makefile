@@ -8,10 +8,15 @@ run-all:
 	./maav-software/bin/maav-exec
 
 clean:
-	rm -r /software/bin; rm -r /software/lib; cd /software/build && make clean
+	rm -r /software/bin
+	rm -r /software/lib
+	cd /software/build && make clean
 
 nuke:
-	cd; rm -r /software/bin; rm -r /software/lib; rm -r /software/build
+	cd
+	rm -r /software/bin
+	rm -r /software/lib
+	rm -r /software/build
 
 .PHONY: build
 .PHONY: bash
